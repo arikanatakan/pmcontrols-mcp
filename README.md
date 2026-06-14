@@ -34,6 +34,12 @@ timestamp).
 pip install pmcontrols-mcp
 ```
 
+Or run it without installing, with [uv](https://docs.astral.sh/uv/):
+
+```
+uvx pmcontrols-mcp
+```
+
 ## Configuration
 
 Add the server to your MCP client's configuration:
@@ -49,6 +55,28 @@ Add the server to your MCP client's configuration:
 ```
 
 The server communicates over stdio and works with any MCP-compatible client.
+
+## Example
+
+Calling `critical_path` with a list of activities returns a structured
+result the agent reads directly, instead of computing the schedule itself:
+
+```json
+{
+  "method": "cpm",
+  "stats": {"project_duration": 15.0, "n_activities": 8.0, "n_critical": 5.0},
+  "meta": {
+    "critical_activities": ["A", "C", "E", "G", "H"],
+    "version": "0.1.0",
+    "input_hash": "sha256:...",
+    "computed_at": "2026-06-15T09:14:02+00:00"
+  },
+  "table": {"activity": ["A", "B", "..."], "slack": [0.0, 1.0, "..."]}
+}
+```
+
+Every result carries provenance (library version, input hash, timestamp), so
+a figure an agent reports can be recomputed and audited later.
 
 ## Design
 

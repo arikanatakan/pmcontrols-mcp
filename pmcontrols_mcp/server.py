@@ -1,18 +1,37 @@
-"""The MCP server: registers the pmcontrols tools and runs over stdio."""
+"""The MCP server: registers the pmcontrols tools and runs over stdio.
+
+All tools are pure, read-only computations, marked with annotations so a
+client can present and auto-run them safely.
+"""
 
 from __future__ import annotations
 
 from mcp.server.fastmcp import FastMCP
+from mcp.types import ToolAnnotations
 
 from . import _tools
 
 mcp = FastMCP("pmcontrols")
 
-mcp.tool()(_tools.critical_path)
-mcp.tool()(_tools.schedule_risk)
-mcp.tool()(_tools.crash_schedule)
-mcp.tool()(_tools.earned_value)
-mcp.tool()(_tools.earned_schedule)
+
+def _annotations(title: str, idempotent: bool = True) -> ToolAnnotations:
+    return ToolAnnotations(
+        title=title,
+        readOnlyHint=True,
+        idempotentHint=idempotent,
+        openWorldHint=False,
+    )
+
+
+mcp.tool(annotations=_annotations("Critical path (CPM)"))(_tools.critical_path)
+mcp.tool(
+    annotations=_annotations("Schedule risk (PERT + Monte Carlo)", idempotent=False)
+)(_tools.schedule_risk)
+mcp.tool(annotations=_annotations("Schedule crashing (minimum-cost LP)"))(
+    _tools.crash_schedule
+)
+mcp.tool(annotations=_annotations("Earned value status"))(_tools.earned_value)
+mcp.tool(annotations=_annotations("Earned schedule"))(_tools.earned_schedule)
 
 
 def main() -> None:
