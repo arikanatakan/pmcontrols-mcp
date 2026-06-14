@@ -5,4 +5,4 @@ PERT, schedule crashing, earned value, earned schedule) as validated tools,
 so an agent calls a checked function instead of doing the math in tokens.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"

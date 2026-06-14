@@ -6,7 +6,7 @@ client can present and auto-run them safely.
 
 from __future__ import annotations
 
-from mcp.server.fastmcp import FastMCP
+from mcp.server.fastmcp import FastMCP, Image
 from mcp.types import ToolAnnotations
 
 from . import _tools
@@ -32,6 +32,16 @@ mcp.tool(annotations=_annotations("Schedule crashing (minimum-cost LP)"))(
 )
 mcp.tool(annotations=_annotations("Earned value status"))(_tools.earned_value)
 mcp.tool(annotations=_annotations("Earned schedule"))(_tools.earned_schedule)
+
+
+@mcp.tool(annotations=_annotations("Gantt chart (PNG)"))
+def gantt_chart(activities: list[_tools.CpmActivity]) -> Image:
+    """Render the critical-path schedule as a Gantt chart image (PNG).
+
+    The critical path is highlighted and total float is shown, so the agent
+    can present the schedule visually instead of describing it.
+    """
+    return Image(data=_tools.gantt_png(activities), format="png")
 
 
 def main() -> None:

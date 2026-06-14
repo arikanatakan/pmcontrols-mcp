@@ -116,3 +116,23 @@ def earned_schedule(periods: list[float], pv: list[float], ev: float) -> dict:
     """
     pmb = pm.plan(periods, pv)
     return {"es": pm.earned_schedule(pmb, ev)}
+
+
+def gantt_png(activities: list[CpmActivity]) -> bytes:
+    """Render the critical-path schedule (CPM) as a Gantt chart PNG.
+
+    Bars run from each activity's earliest start to its earliest finish; the
+    critical path is highlighted and total float is shown.
+    """
+    import io
+
+    import matplotlib
+
+    matplotlib.use("Agg")  # headless rendering; no display required
+    import matplotlib.pyplot as plt
+
+    fig, _ = pm.gantt(pm.cpm(_as_dicts(activities)))
+    buffer = io.BytesIO()
+    fig.savefig(buffer, format="png", dpi=120, bbox_inches="tight")
+    plt.close(fig)
+    return buffer.getvalue()

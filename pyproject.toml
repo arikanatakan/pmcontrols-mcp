@@ -4,17 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pmcontrols-mcp"
-version = "0.1.0"
+version = "0.2.0"
 description = "MCP server for pmcontrols: validated project scheduling and earned value tools for AI agents."
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "Atakan Arikan" }]
 requires-python = ">=3.10"
-dependencies = ["pmcontrols>=0.1.0", "mcp>=1.0"]
+dependencies = ["pmcontrols[plot]>=0.2.0", "mcp>=1.0"]
 keywords = [
     "mcp", "model-context-protocol", "ai-agents", "project-management",
     "critical-path", "cpm", "pert", "earned-value", "earned-schedule",
-    "project-controls",
+    "project-controls", "gantt",
 ]
 classifiers = [
     "Development Status :: 4 - Beta",

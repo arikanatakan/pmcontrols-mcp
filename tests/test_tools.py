@@ -67,3 +67,9 @@ def test_earned_value():
 def test_earned_schedule():
     d = t.earned_schedule(PERIODS, PV, ev=34000)
     assert d["es"] == 3.4
+
+
+def test_gantt_png_returns_png_bytes():
+    png = t.gantt_png(FOUNDRY)
+    assert isinstance(png, (bytes, bytearray))
+    assert png[:8] == b"\x89PNG\r\n\x1a\n"  # PNG magic number

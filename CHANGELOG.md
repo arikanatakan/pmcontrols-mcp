@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0
+
+### Added
+
+* `gantt_chart` tool: renders the critical-path schedule as a Gantt chart PNG
+  image, with the critical path highlighted and total float shown.
+
 ## 0.1.0
 
 First public release.

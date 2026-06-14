@@ -26,10 +26,11 @@ analysis and explain the result.
 | `crash_schedule` | minimum-cost schedule compression to a deadline, solved as a linear program |
 | `earned_value` | the full EVM indicator set with Lipke earned schedule, against a planned-value baseline |
 | `earned_schedule` | the earned schedule for a given earned value |
+| `gantt_chart` | a Gantt chart of the schedule as a PNG image, critical path highlighted |
 
-Each tool returns the library's structured payload: named statistics, a tidy
-table, structured alerts, and provenance (library version, input hash,
-timestamp).
+The analysis tools return the library's structured payload: named statistics,
+a tidy table, structured alerts, and provenance (library version, input hash,
+timestamp). `gantt_chart` returns a PNG image the client can display.
 
 ## Installation
 
