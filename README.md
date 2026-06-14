@@ -1,3 +1,5 @@
+<!-- mcp-name: io.github.arikanatakan/pmcontrols-mcp -->
+
 # pmcontrols-mcp
 
 [![CI](https://github.com/arikanatakan/pmcontrols-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/arikanatakan/pmcontrols-mcp/actions/workflows/ci.yml)
