@@ -100,6 +100,11 @@ The reasoning behind routing project-control arithmetic through a validated
 tool, rather than letting a model generate it, is set out in
 [Project control is not a language task](https://arikanatakan.github.io/pmcontrols/agents/).
 
+## Related
+
+[pmcontrols](https://github.com/arikanatakan/pmcontrols) is the underlying
+library this server wraps.
+
 ## License
 
 MIT. Written and maintained by [Atakan Arikan](https://github.com/arikanatakan),

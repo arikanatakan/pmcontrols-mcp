@@ -38,6 +38,7 @@ dev = ["pytest>=7", "ruff", "build"]
 Homepage = "https://github.com/arikanatakan/pmcontrols-mcp"
 Repository = "https://github.com/arikanatakan/pmcontrols-mcp"
 Issues = "https://github.com/arikanatakan/pmcontrols-mcp/issues"
+Library = "https://github.com/arikanatakan/pmcontrols"
 
 [tool.setuptools.packages.find]
 include = ["pmcontrols_mcp*"]
