@@ -3,8 +3,7 @@
 # pmcontrols-mcp
 
 [![CI](https://github.com/arikanatakan/pmcontrols-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/arikanatakan/pmcontrols-mcp/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/pmcontrols-mcp)](https://pypi.org/project/pmcontrols-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/pmcontrols-mcp)](https://pypi.org/project/pmcontrols-mcp/)
+[![PyPI](https://img.shields.io/pypi/v/pmcontrols-mcp?v=2)](https://pypi.org/project/pmcontrols-mcp/)
 [![License: MIT](https://img.shields.io/github/license/arikanatakan/pmcontrols-mcp)](LICENSE)
 
 An MCP server that exposes [pmcontrols](https://github.com/arikanatakan/pmcontrols),
