@@ -18,7 +18,13 @@ metrics fail silently. The calculation belongs in a deterministic, versioned,
 validated library that the agent calls, which leaves the agent to choose the
 analysis and explain the result.
 
+![pmcontrols-mcp architecture: an AI agent calls the server's analysis and chart tools, which route to the validated pmcontrols core and return structured JSON or PNG images](assets/architecture.png)
+
 ## Tools
+
+**Analysis tools** return the library's structured payload: named statistics,
+a tidy table, structured alerts, and provenance (library version, input hash,
+timestamp).
 
 | Tool | Purpose |
 | ---- | ------- |
@@ -27,15 +33,16 @@ analysis and explain the result.
 | `crash_schedule` | minimum-cost schedule compression to a deadline, solved as a linear program |
 | `earned_value` | the full EVM indicator set with Lipke earned schedule, against a planned-value baseline |
 | `earned_schedule` | the earned schedule for a given earned value |
-| `gantt_chart` | a Gantt chart of the schedule as a PNG image, critical path highlighted |
-| `network_chart` | the activity network with the critical path as a PNG image |
-| `evm_chart` | the earned value S-curve (PV/EV/AC + forecast) as a PNG image |
-| `criticality_chart` | Monte Carlo per-activity criticality bars as a PNG image |
-| `completion_histogram` | Monte Carlo completion-time histogram as a PNG image |
 
-The analysis tools return the library's structured payload: named statistics,
-a tidy table, structured alerts, and provenance (library version, input hash,
-timestamp). The chart tools return PNG images the client can display.
+**Chart tools** return a PNG image the client can display.
+
+| Tool | Purpose |
+| ---- | ------- |
+| `gantt_chart` | a Gantt chart of the schedule, critical path highlighted |
+| `network_chart` | the activity network with the critical path |
+| `evm_chart` | the earned value S-curve (PV/EV/AC + forecast) |
+| `criticality_chart` | Monte Carlo per-activity criticality bars |
+| `completion_histogram` | Monte Carlo completion-time histogram |
 
 ## Installation
 
