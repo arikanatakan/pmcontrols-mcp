@@ -9,7 +9,8 @@
 
 An MCP server that exposes [pmcontrols](https://github.com/arikanatakan/pmcontrols),
 the validated project scheduling and earned value library for Python, as tools
-for AI agents.
+for AI agents: from critical-path and earned-value analysis to ready-to-show
+charts (Gantt, network, S-curve, criticality, completion histogram).
 
 Agents asked to plan a project or report its status tend to generate the
 arithmetic themselves: a backward pass done by eye, an earned-value index
