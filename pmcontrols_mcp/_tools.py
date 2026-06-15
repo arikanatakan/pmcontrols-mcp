@@ -118,21 +118,57 @@ def earned_schedule(periods: list[float], pv: list[float], ev: float) -> dict:
     return {"es": pm.earned_schedule(pmb, ev)}
 
 
-def gantt_png(activities: list[CpmActivity]) -> bytes:
-    """Render the critical-path schedule (CPM) as a Gantt chart PNG.
-
-    Bars run from each activity's earliest start to its earliest finish; the
-    critical path is highlighted and total float is shown.
-    """
-    import io
-
+def _use_agg() -> None:
+    """Select a headless matplotlib backend before any pyplot import."""
     import matplotlib
 
-    matplotlib.use("Agg")  # headless rendering; no display required
+    matplotlib.use("Agg")
+
+
+def _render_png(fig) -> bytes:
+    import io
+
     import matplotlib.pyplot as plt
 
-    fig, _ = pm.gantt(pm.cpm(_as_dicts(activities)))
     buffer = io.BytesIO()
     fig.savefig(buffer, format="png", dpi=120, bbox_inches="tight")
     plt.close(fig)
     return buffer.getvalue()
+
+
+def gantt_png(activities: list[CpmActivity]) -> bytes:
+    """Render the critical-path schedule (CPM) as a Gantt chart PNG."""
+    _use_agg()
+    fig, _ = pm.gantt(pm.cpm(_as_dicts(activities)))
+    return _render_png(fig)
+
+
+def network_png(activities: list[CpmActivity]) -> bytes:
+    """Render the activity network (critical path highlighted) as a PNG."""
+    _use_agg()
+    fig, _ = pm.network_diagram(pm.cpm(_as_dicts(activities)))
+    return _render_png(fig)
+
+
+def evm_png(
+    periods: list[float], pv: list[float], ev: float, ac: float, at: float
+) -> bytes:
+    """Render the earned value S-curve (PV/EV/AC + forecast) as a PNG."""
+    _use_agg()
+    pmb = pm.plan(periods, pv)
+    fig, _ = pm.evm_curve(pmb, pm.evm(pmb, ev=ev, ac=ac, at=at))
+    return _render_png(fig)
+
+
+def criticality_png(activities: list[PertActivity]) -> bytes:
+    """Render the Monte Carlo criticality bars as a PNG."""
+    _use_agg()
+    fig, _ = pm.criticality(pm.pert(_as_dicts(activities)))
+    return _render_png(fig)
+
+
+def histogram_png(activities: list[PertActivity]) -> bytes:
+    """Render the Monte Carlo completion-time histogram as a PNG."""
+    _use_agg()
+    fig, _ = pm.mc_distribution(pm.pert(_as_dicts(activities), keep_samples=True))
+    return _render_png(fig)

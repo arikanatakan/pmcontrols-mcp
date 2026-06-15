@@ -27,10 +27,14 @@ analysis and explain the result.
 | `earned_value` | the full EVM indicator set with Lipke earned schedule, against a planned-value baseline |
 | `earned_schedule` | the earned schedule for a given earned value |
 | `gantt_chart` | a Gantt chart of the schedule as a PNG image, critical path highlighted |
+| `network_chart` | the activity network with the critical path as a PNG image |
+| `evm_chart` | the earned value S-curve (PV/EV/AC + forecast) as a PNG image |
+| `criticality_chart` | Monte Carlo per-activity criticality bars as a PNG image |
+| `completion_histogram` | Monte Carlo completion-time histogram as a PNG image |
 
 The analysis tools return the library's structured payload: named statistics,
 a tidy table, structured alerts, and provenance (library version, input hash,
-timestamp). `gantt_chart` returns a PNG image the client can display.
+timestamp). The chart tools return PNG images the client can display.
 
 ## Installation
 

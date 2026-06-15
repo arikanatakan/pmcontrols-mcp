@@ -44,6 +44,32 @@ def gantt_chart(activities: list[_tools.CpmActivity]) -> Image:
     return Image(data=_tools.gantt_png(activities), format="png")
 
 
+@mcp.tool(annotations=_annotations("Network diagram (PNG)"))
+def network_chart(activities: list[_tools.CpmActivity]) -> Image:
+    """Render the activity network with the critical path as a PNG image."""
+    return Image(data=_tools.network_png(activities), format="png")
+
+
+@mcp.tool(annotations=_annotations("Earned value S-curve (PNG)"))
+def evm_chart(
+    periods: list[float], pv: list[float], ev: float, ac: float, at: float
+) -> Image:
+    """Render the earned value S-curve (PV/EV/AC + forecast) as a PNG image."""
+    return Image(data=_tools.evm_png(periods, pv, ev, ac, at), format="png")
+
+
+@mcp.tool(annotations=_annotations("Criticality chart (PNG)"))
+def criticality_chart(activities: list[_tools.PertActivity]) -> Image:
+    """Render the Monte Carlo per-activity criticality bars as a PNG image."""
+    return Image(data=_tools.criticality_png(activities), format="png")
+
+
+@mcp.tool(annotations=_annotations("Completion distribution (PNG)"))
+def completion_histogram(activities: list[_tools.PertActivity]) -> Image:
+    """Render the Monte Carlo completion-time histogram as a PNG image."""
+    return Image(data=_tools.histogram_png(activities), format="png")
+
+
 def main() -> None:
     """Console-script entry point: run the server on stdio."""
     mcp.run()

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1
+
+### Added
+
+* Four chart tools returning PNG images: `network_chart`, `evm_chart`,
+  `criticality_chart`, and `completion_histogram`, alongside `gantt_chart`.
+
 ## 0.2.0
 
 ### Added

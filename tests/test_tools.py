@@ -69,7 +69,32 @@ def test_earned_schedule():
     assert d["es"] == 3.4
 
 
+def _png_ok(data):
+    return isinstance(data, (bytes, bytearray)) and data[:8] == b"\x89PNG\r\n\x1a\n"
+
+
+_THREE_POINT = [
+    {"id": a["id"], "predecessors": a["predecessors"],
+     "a": a["duration"] * 0.8, "m": a["duration"], "b": a["duration"] * 1.3}
+    for a in FOUNDRY
+]
+
+
 def test_gantt_png_returns_png_bytes():
-    png = t.gantt_png(FOUNDRY)
-    assert isinstance(png, (bytes, bytearray))
-    assert png[:8] == b"\x89PNG\r\n\x1a\n"  # PNG magic number
+    assert _png_ok(t.gantt_png(FOUNDRY))
+
+
+def test_network_png():
+    assert _png_ok(t.network_png(FOUNDRY))
+
+
+def test_evm_png():
+    assert _png_ok(t.evm_png(PERIODS, PV, 30000, 35000, 4))
+
+
+def test_criticality_png():
+    assert _png_ok(t.criticality_png(_THREE_POINT))
+
+
+def test_completion_histogram_png():
+    assert _png_ok(t.histogram_png(_THREE_POINT))
