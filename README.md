@@ -76,7 +76,7 @@ result the agent reads directly, instead of computing the schedule itself:
   "stats": {"project_duration": 15.0, "n_activities": 8.0, "n_critical": 5.0},
   "meta": {
     "critical_activities": ["A", "C", "E", "G", "H"],
-    "version": "0.1.0",
+    "version": "0.2.1",
     "input_hash": "sha256:...",
     "computed_at": "2026-06-15T09:14:02+00:00"
   },
