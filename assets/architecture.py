@@ -54,7 +54,7 @@ ax.text(3, 91, "validated project-control tools for AI agents", fontsize=9.5,
 
 # agent
 box(12, 62, 18, 22,
-    "AI agent\n\nMCP client\n(Claude Desktop,\nClaude Code, ...)",
+    "AI agent\n\nMCP client",
     NEUT_F, NEUT_E, fs=8.2)
 
 # server container
