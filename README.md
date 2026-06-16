@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/arikanatakan/pmcontrols-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/arikanatakan/pmcontrols-mcp/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/pmcontrols-mcp?v=2)](https://pypi.org/project/pmcontrols-mcp/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 An MCP server that exposes [pmcontrols](https://github.com/arikanatakan/pmcontrols),
 the validated project scheduling and earned value library for Python, as tools
