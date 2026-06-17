@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,7 +7,8 @@ name = "pmcontrols-mcp"
 version = "0.2.1"
 description = "MCP server for pmcontrols: validated project scheduling and earned value tools for AI agents."
 readme = "README.md"
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [{ name = "Atakan Arikan" }]
 requires-python = ">=3.10"
 dependencies = ["pmcontrols[plot]>=0.2.1", "mcp>=1.0"]
@@ -19,11 +20,11 @@ keywords = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Scientific/Engineering",
     "Topic :: Office/Business :: Scheduling",
 ]
@@ -32,7 +33,7 @@ classifiers = [
 pmcontrols-mcp = "pmcontrols_mcp.server:main"
 
 [project.optional-dependencies]
-dev = ["pytest>=7", "ruff", "build"]
+dev = ["pytest>=7", "ruff", "mypy", "build"]
 
 [project.urls]
 Homepage = "https://github.com/arikanatakan/pmcontrols-mcp"
@@ -45,6 +46,9 @@ include = ["pmcontrols_mcp*"]
 
 [tool.ruff]
 line-length = 88
+
+[tool.mypy]
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

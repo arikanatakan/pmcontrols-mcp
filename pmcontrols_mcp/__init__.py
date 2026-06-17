@@ -5,4 +5,6 @@ PERT, schedule crashing, earned value, earned schedule) as validated tools,
 so an agent calls a checked function instead of doing the math in tokens.
 """
 
-__version__ = "0.2.1"
+from ._version import __version__
+
+__all__ = ["__version__"]
